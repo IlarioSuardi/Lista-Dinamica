@@ -9,4 +9,8 @@ public class Nodo {
         this.value = value;
         this.next = null;
     }
+
+    public String toString() {
+        return value;
+    }
 }

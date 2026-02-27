@@ -77,4 +77,14 @@ public class Lista {
 
         return false;
     }
+
+    public String toString() {
+        String result = "";
+        Nodo temp = head;
+        while (temp != null) {
+            result += temp.value + "\n";
+            temp = temp.next;
+        }
+        return result;
+    }
 }
