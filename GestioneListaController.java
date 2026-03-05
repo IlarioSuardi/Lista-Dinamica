@@ -72,19 +72,22 @@ public class GestioneListaController {
     @FXML
     protected void cercaClick() {
         String valore = cercaTesto.getText();
+
         lista.resetIteratore();
         boolean trovato = false;
-        String elemento = null;
+        String elemento;
+        int posizione = 1;
 
         while ((elemento = lista.visita()) != null) {
             if (elemento.equals(valore)) {
                 trovato = true;
                 break;
             }
+            posizione++;
         }
 
         if (trovato) {
-            messaggioStato.setText("Elemento trovato!");
+            messaggioStato.setText("Elemento trovato in posizione: " + posizione);
         } else {
             messaggioStato.setText("Elemento non trovato.");
         }
