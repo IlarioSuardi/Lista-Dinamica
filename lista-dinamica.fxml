@@ -8,26 +8,36 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="258.0" spacing="5.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.listadinamica.GestioneListaController">
+<VBox alignment="CENTER" spacing="5.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.listadinamica.GestioneListaController">
     <children>
         <Label prefHeight="28.0" prefWidth="323.0" text="Gestione Lista" />
-        <Region prefHeight="20.0" prefWidth="200.0" />
-        <Label prefHeight="28.0" prefWidth="323.0" text="Inserisci" />
-        <TextField fx:id="txtInserisci" prefHeight="34.0" prefWidth="198.0" promptText="aggiungi valore" />
-        <Button mnemonicParsing="false" onAction="#onAggiungiClick" prefHeight="26.0" prefWidth="242.0" text="Aggiungi" />
-        <Region prefHeight="20.0" prefWidth="200.0" />
-        <Label prefHeight="28.0" prefWidth="323.0" text="Cerca elemento" />
-        <TextField fx:id="txtCerca" prefHeight="34.0" prefWidth="234.0" promptText="valore da cercare" />
-        <Label prefHeight="28.0" prefWidth="323.0" text="Nuovo valore" />
-        <TextField fx:id="txtNuovo" prefHeight="30.0" prefWidth="237.0" promptText="nuovo valore" />
-        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="258.0">
+        <Region prefHeight="0.0" prefWidth="323.0" />
+
+        <Label text="Inserisci" />
+        <TextField fx:id="inserisciTesto" prefWidth="276.0" promptText="aggiungi valore" />
+        <Button onAction="#aggiungiClick" prefHeight="25.0" prefWidth="210.0" text="Aggiungi" />
+
+        <Region prefHeight="0.0" prefWidth="323.0" />
+
+        <Label text="Cerca elemento" />
+        <TextField fx:id="cercaTesto" prefWidth="274.0" promptText="valore da cercare" />
+
+        <Label text="Nuovo valore" />
+        <TextField fx:id="nuovoTesto" prefWidth="276.0" promptText="nuovo valore" />
+
+        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="323.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#onModificaClick" text="Modifica" />
-                <Button mnemonicParsing="false" onAction="#onEliminaClick" text="Elimina" />
+                <Button onAction="#modificaClick" prefHeight="25.0" prefWidth="105.0" text="Modifica" />
+      
+                          <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#cercaClick" prefHeight="25.0" prefWidth="105.0" text="Cerca" />
+                <Button onAction="#eliminaClick" prefWidth="105.0" text="Elimina" />
             </children>
         </HBox>
-        <Region prefHeight="20.0" prefWidth="200.0" />
-        <Button mnemonicParsing="false" onAction="#onVisualizzaClick" prefHeight="26.0" prefWidth="243.0" text="Visualizza" />
-        <TextArea fx:id="txtOutput" prefHeight="98.0" prefWidth="258.0" text="output" />
+
+        <Region prefHeight="0.0" prefWidth="323.0" />
+
+        <TextField fx:id="messaggioStato" editable="false" prefWidth="258.0" promptText="messaggi di stato" />
+
+        <TextArea fx:id="output" prefHeight="92.0" prefWidth="323.0" promptText="output lista" />
     </children>
 </VBox>
