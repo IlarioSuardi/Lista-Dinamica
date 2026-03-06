@@ -7,13 +7,19 @@ import javafx.scene.control.TextField;
 public class GestioneListaController {
 
     @FXML
-    private TextField inserisciTesto;
+    private TextField nominativo;
 
     @FXML
-    private TextField cercaTesto;
+    private TextField documento;
 
     @FXML
-    private TextField nuovoTesto;
+    private TextField importo;
+
+    @FXML
+    private TextField numeroMulte;
+
+    @FXML
+    private TextField cercaDocumento;
 
     @FXML
     private TextField messaggioStato;
@@ -29,75 +35,83 @@ public class GestioneListaController {
 
     @FXML
     protected void aggiungiClick() {
-        String valore = inserisciTesto.getText();
 
-        if (!valore.isEmpty()) {
-            lista.aggiungi(valore);
-            messaggioStato.setText("Elemento aggiunto!");
-            inserisciTesto.clear();
-            aggiornaOutput();
-        }
-    }
+        String nom = nominativo.getText();
+        String doc = documento.getText();
+        double imp = Double.parseDouble(importo.getText());
+        int num = Integer.parseInt(numeroMulte.getText());
 
-    @FXML
-    protected void modificaClick() {
-        String vecchio = cercaTesto.getText();
-        String nuovo = nuovoTesto.getText();
+        Multa multa = new Multa(nom, doc, imp, num);
 
-        if (lista.modifica(vecchio, nuovo)) {
-            messaggioStato.setText("Modifica effettuata!");
-        } else {
-            messaggioStato.setText("Elemento non trovato.");
-        }
+        lista.aggiungi(multa);
 
-        cercaTesto.clear();
-        nuovoTesto.clear();
+        messaggioStato.setText("Multa aggiunta");
+
+        nominativo.clear();
+        documento.clear();
+        importo.clear();
+        numeroMulte.clear();
+
         aggiornaOutput();
     }
 
     @FXML
     protected void eliminaClick() {
-        String valore = cercaTesto.getText();
 
-        if (lista.elimina(valore)) {
-            messaggioStato.setText("Elemento eliminato!");
+        String doc = cercaDocumento.getText();
+
+        if (lista.elimina(doc)) {
+            messaggioStato.setText("Multa eliminata");
         } else {
-            messaggioStato.setText("Elemento non trovato.");
+            messaggioStato.setText("Documento non trovato");
         }
 
-        cercaTesto.clear();
+        cercaDocumento.clear();
+
+        aggiornaOutput();
+    }
+
+    @FXML
+    protected void modificaClick() {
+
+        String doc = cercaDocumento.getText();
+        double nuovoImporto = Double.parseDouble(importo.getText());
+
+        if (lista.modifica(doc, nuovoImporto)) {
+            messaggioStato.setText("Importo modificato");
+        } else {
+            messaggioStato.setText("Documento non trovato");
+        }
+
         aggiornaOutput();
     }
 
     @FXML
     protected void cercaClick() {
-        String valore = cercaTesto.getText();
+
+        String doc = cercaDocumento.getText();
 
         lista.resetIteratore();
-        boolean trovato = false;
-        String elemento;
-        int posizione = 1;
 
-        while ((elemento = lista.visita()) != null) {
-            if (elemento.equals(valore)) {
+        Multa m;
+        int posizione = 1;
+        boolean trovato = false;
+
+        while ((m = lista.visita()) != null) {
+
+            if (m.getNumeroDocumento().equals(doc)) {
+                messaggioStato.setText("Trovato in posizione: " + posizione);
                 trovato = true;
                 break;
             }
+
             posizione++;
         }
 
-        if (trovato) {
-            messaggioStato.setText("Elemento trovato in posizione: " + posizione);
-        } else {
-            messaggioStato.setText("Elemento non trovato.");
+        if (!trovato) {
+            messaggioStato.setText("Documento non trovato");
         }
 
-        cercaTesto.clear();
-        aggiornaOutput();
-    }
-
-    @FXML
-    protected void visualizzaClick() {
         aggiornaOutput();
     }
 }

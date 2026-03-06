@@ -1,56 +1,56 @@
 package com.example.listadinamica;
 
 public class Multa {
-    private String nomintivo;
+    private String nominativo;
     private String numeroDocumento;
     private double importo;
     private int numeroVerbale;
 
-    public String getNomintivo() {
-        return nomintivo;
+    public Multa(String nominativo, String numeroDocumento, double importo, int numeroVerbale) {
+        this.nominativo = nominativo;
+        this.numeroDocumento = numeroDocumento;
+        this.importo = importo;
+        this.numeroVerbale = numeroVerbale;
+    }
+
+    public String getNominativo() {
+        return nominativo;
+    }
+
+    public void setNominativo(String nominativo) {
+        this.nominativo = nominativo;
     }
 
     public String getNumeroDocumento() {
         return numeroDocumento;
     }
 
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
     public double getImporto() {
         return importo;
+    }
+
+    public void setImporto(double importo) {
+        this.importo = importo;
     }
 
     public int getNumeroVerbale() {
         return numeroVerbale;
     }
 
-    public void setNomintivo(String nomintivo) {
-        this.nomintivo = nomintivo;
-    }
-
-    private void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
-    }
-
-    private void setImporto(double importo) {
-        this.importo = importo;
-    }
-
-    private void setNumeroVerbale(int numeroVerbale) {
-        this.numeroVerbale = numeroVerbale;
-    }
-
-    public Multa(String nomintivo, String numeroDocumento, double importo, int numeroVerbale) {
-        this.nomintivo = nomintivo;
-        this.numeroDocumento = numeroDocumento;
-        this.importo = importo;
+    public void setNumeroVerbale(int numeroVerbale) {
         this.numeroVerbale = numeroVerbale;
     }
 
     @Override
     public String toString() {
         return "Multa:" + "\n" +
-                "nomintivo= " + nomintivo + "\n" +
-                "numeroDocumento= " + numeroDocumento + '\n' +
-                "importo= " + importo + "\n" +
-                "numeroVerbale= " + numeroVerbale + "\n";
-        }
+                "Nominativo= " + nominativo + "\n" +
+                "NumeroDocumento= " + numeroDocumento + "\n" +
+                "Importo= " + importo + "\n" +
+                "NumeroVerbale= " + numeroVerbale + "\n";
+    }
 }
